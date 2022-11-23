@@ -191,19 +191,19 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
-  try {
-    const data = await Recipe.findAll({
-      where: {
-        title: "Henry"
-      }
-    });
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const data = await Recipe.findAll({
+//       where: {
+//         title: "Henry"
+//       }
+//     });
 
-    if (data.length) return res.status(200).json(data);
-    else return res.status(404).send("There is no recipe with that title");
-  } catch (error) {
-    next(error);
-  }
-});
+//     if (data.length) return res.status(200).json(data);
+//     else return res.status(404).send("There is no recipe with that title");
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;

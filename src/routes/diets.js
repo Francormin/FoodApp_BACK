@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
         { name: "whole 30" }
       ]).catch(error => new Error("GET diets from Diet.bulkCreate: ", error));
 
-      res.status(200).send("The diet types have been successfully preloaded into the database");
+      return res.status(200).send("The diet types have been successfully preloaded into the database");
     } else {
       const apiData = await axios
         .get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`)
@@ -62,7 +62,7 @@ router.get("/", async (req, res, next) => {
 
       const diets = await Diet.findAll().catch(error => new Error("GET diets from Diet.findAll(int): ", error));
 
-      res.status(200).json(diets);
+      return res.status(200).json(diets);
     }
   } catch (error) {
     next(error);
